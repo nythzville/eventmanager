@@ -1,0 +1,6 @@
+com\eventmanager\controller\EventController.class
+com\eventmanager\repo\EventRepo.class
+com\eventmanager\Application.class
+com\eventmanager\model\Event.class
+com\eventmanager\dto\EventListDto.class
+com\eventmanager\dto\EventDto.class

@@ -1,0 +1,9 @@
+<ol>
+    <li ng-repeat="greeting in greetings">
+        <a ng-href="#/greeting/edit/{{greeting.id}}">Edit</a>
+        <a ng-click="removeGreeting(greeting.id, $index)">Delete</a>
+        <a ng-href="#/greeting/{{greeting.id}}">{{greeting.title}}</a>
+    </li>
+</ol>
+
+<a ng-href="#/greeting/form">New</a>

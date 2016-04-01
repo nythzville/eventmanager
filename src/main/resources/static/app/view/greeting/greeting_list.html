@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+    <table class="">
+        <thead>
+            <tr>
+                <td>Action</td>
+                <td>Date Start</td>
+                <td>Date End</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="event in events">
+                <td><a ng-href="#/greeting/edit/{{event.id}}">Edit</a>
+                    <a ng-click="removeGreeting(event.id, $index)">Delete</a>
+                </td>
+
+                <td>{{event.startDate}}</td>
+                <td>{{event.endDate}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <a ng-href="#/greeting/form">New</a>
+</body>
+</html>
