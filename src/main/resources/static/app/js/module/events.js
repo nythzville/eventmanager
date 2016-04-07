@@ -21,8 +21,8 @@ define([
 
                 // Form for new event
                 .when('/event/form', {
-                    templateUrl: 'view/greeting/greeting_form.html',
-                    controller: 'GreetingSaveCtrl',
+                    templateUrl: 'view/event/event_form.html',
+                    controller: 'EventSaveCtrl',
                     resolve: {
                         greeting: [function () {
                             return {};
@@ -32,19 +32,19 @@ define([
 
                 // Edit form for event
                 .when('/event/edit/:id', {
-                    templateUrl: 'view/greeting/greeting_form.html',
-                    controller: 'GreetingSaveCtrl',
+                    templateUrl: 'view/event/event_form.html',
+                    controller: 'EventSaveCtrl',
                     resolve: {
-                        greeting: ['$route', 'GreetingResource', function ($route, GreetingResource) {
-                            return GreetingResource.get({id: $route.current.params.id}).$promise;
+                        greeting: ['$route', 'EventResource', function ( $route, EventResource) {
+                            return EventResource.get({id: $route.current.params.id}).$promise;
                         }]
                     }
                 })
 
 
                 .when('/event/:id', {
-                    templateUrl: 'view/greeting/greeting_detail.html',
-                    controller: 'GreetingDetailsCtrl'
+                    templateUrl: 'view/event/event_details.html',
+                    controller: 'EventDetailsCtrl'
                 });
         }])
 
@@ -53,16 +53,16 @@ define([
         /* Controller for Events  */
         /* -----------------------*/
 
-        // .controller('GreetingSaveCtrl', ['$scope', '$location', '$routeParams', 'GreetingResource', 'greeting',
-        //     function (a, $location, $routeParams, GreetingResource, greeting) {
-        //         $scope.greeting = greeting;
-        //         $scope.saveGreeting = function () {
-        //             GreetingResource.save($scope.greeting, function (data) {
-        //                 alert("Saved with ID: " + data.id);
-        //                 $location.path('/greetings');
-        //             });
-        //         };
-        //     }])
+        .controller('EventSaveCtrl', ['$scope', '$location', '$routeParams', 'EventResource',
+            function ($scope, $location, $routeParams, EventResource, event) {
+                $scope.event = event; //EventResource.get({id: $routeParams.id});
+                $scope.saveEvent = function () {
+                    EventResource.save($scope.event, function (data) {
+                        alert("Saved with ID: " + data.id);
+                        $location.path('/events');
+                    });
+                }
+            }])
 
         // Event List Controller
         .controller('EventListCtrl', ['$scope', 'EventResource', 'events',
@@ -82,10 +82,11 @@ define([
             }])
 
 
-        // .controller('GreetingDetailsCtrl', ['$scope', '$routeParams', 'GreetingResource',
-        //     function ($scope, $routeParams, GreetingResource) {
-        //         $scope.greeting = GreetingResource.get({id: $routeParams.id});
-        //     }])
+        .controller('EventDetailsCtrl', ['$scope', '$routeParams', 'EventResource',
+            function ($scope, $routeParams, EventResource) {
+                $scope.event = EventResource.get({id: $routeParams.id});
+            }])
+
         .factory('EventResource', ['$resource', function ($resource) {
             return $resource('/event/:id');
         }]);

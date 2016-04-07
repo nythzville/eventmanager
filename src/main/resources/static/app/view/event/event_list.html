@@ -8,7 +8,9 @@
     </thead>
     <tbody>
     <tr ng-repeat="event in events">
-        <td><a ng-href="#/greeting/edit/{{event.id}}" class="btn btn-default">Edit</a>
+        <td>
+            <a ng-href="#/event/{{event.id}}" class="btn btn-success">View</a>
+            <a ng-href="#/event/edit/{{event.id}}" class="btn btn-default">Edit</a>
             <a ng-click="removeGreeting(event.id, $index)" class="btn btn-warning">Delete</a>
         </td>
 
@@ -18,4 +20,4 @@
     </tr>
     </tbody>
 </table>
-<a ng-href="#/greeting/form">New</a>
+<a ng-href="#/event/form">New</a>

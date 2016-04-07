@@ -13,6 +13,7 @@ public class Event {
     @Id
     @GeneratedValue
     private Long Id;
+    private String eventName;
     private String startDate;
     private String endDate;
 
@@ -23,6 +24,10 @@ public class Event {
     public void setId(Long id) {
         Id = id;
     }
+
+    public String getEventName() { return eventName; }
+
+    public void setEventName(String eventName) { this.eventName = eventName; }
 
     public String getStartDate() {
         return startDate;

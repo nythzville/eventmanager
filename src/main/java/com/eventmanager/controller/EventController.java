@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -48,14 +49,18 @@ public class EventController {
     }
     @RequestMapping(value = "/event", method = POST)
     public EventDto save(@RequestBody EventDto dto) {
-        Event envelope = dto.getId() == null ? new Event() : eventRepo.findOne(dto.getId());
+        Event event = dto.getId() == null ? new Event() : eventRepo.findOne(dto.getId());
 
-        BeanUtils.copyProperties(dto, envelope, "password", "excludeMeToo");
-        Event saved = eventRepo.save(envelope);
+        BeanUtils.copyProperties(dto, event, "password", "excludeMeToo");
+        Event saved = eventRepo.save(event);
 
         BeanUtils.copyProperties(saved, dto);
         return dto;
     }
 
+    @RequestMapping(value = "/event/{id}", method = DELETE)
+    public void delete(@PathVariable Long id) {
+        eventRepo.delete(id);
+    }
 
 }

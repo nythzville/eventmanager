@@ -1,6 +1,11 @@
+com\eventmanager\model\Sample.class
+com\eventmanager\Application.class
+com\eventmanager\repo\UserRepo.class
+com\eventmanager\model\User.class
+com\eventmanager\dto\EventDto.class
+com\eventmanager\controller\UserController.class
 com\eventmanager\controller\EventController.class
 com\eventmanager\repo\EventRepo.class
-com\eventmanager\Application.class
-com\eventmanager\model\Event.class
 com\eventmanager\dto\EventListDto.class
-com\eventmanager\dto\EventDto.class
+com\eventmanager\model\Event.class
+com\eventmanager\dto\UserDto.class

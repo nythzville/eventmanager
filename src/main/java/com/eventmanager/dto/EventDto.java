@@ -5,14 +5,16 @@ package com.eventmanager.dto;
  */
 public class EventDto {
     private Long Id;
+    private String eventName;
     private String startDate;
     private String endDate;
 
     public EventDto(){
 
     }
-    public EventDto(Long id, String startDate, String endDate) {
+    public EventDto(Long id, String eventName, String startDate, String endDate) {
         Id = id;
+        this.eventName = eventName;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -24,6 +26,10 @@ public class EventDto {
     public void setId(Long id) {
         Id = id;
     }
+
+    public String getEventName() { return eventName; }
+
+    public void setEventName(String eventName) { this.eventName = eventName; }
 
     public String getStartDate() {
         return startDate;
