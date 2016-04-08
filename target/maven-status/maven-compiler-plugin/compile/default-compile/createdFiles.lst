@@ -1,11 +1,17 @@
 com\eventmanager\model\Sample.class
 com\eventmanager\Application.class
 com\eventmanager\repo\UserRepo.class
+com\eventmanager\dto\ParticipantListDto.class
 com\eventmanager\model\User.class
 com\eventmanager\dto\EventDto.class
 com\eventmanager\controller\UserController.class
 com\eventmanager\controller\EventController.class
+com\eventmanager\repo\ParticipantRepo.class
+com\eventmanager\dto\ParticipantDto.class
+com\eventmanager\model\Participant.class
+com\eventmanager\controller\ParticipantController.class
 com\eventmanager\repo\EventRepo.class
 com\eventmanager\dto\EventListDto.class
+com\eventmanager\dto\EventParticipantsDto.class
 com\eventmanager\model\Event.class
 com\eventmanager\dto\UserDto.class

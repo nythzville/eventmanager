@@ -45,6 +45,11 @@ define([
                 .when('/event/:id', {
                     templateUrl: 'view/event/event_details.html',
                     controller: 'EventDetailsCtrl'
+                })
+
+                .when('/event/:id/participants', {
+                    templateUrl: 'view/event/event_participants.html',
+                    controller: 'EventParticipantsCtrl'
                 });
         }])
 
@@ -54,8 +59,10 @@ define([
         /* -----------------------*/
 
         .controller('EventSaveCtrl', ['$scope', '$location', '$routeParams', 'EventResource',
-            function ($scope, $location, $routeParams, EventResource, event) {
-                $scope.event = event; //EventResource.get({id: $routeParams.id});
+            function ($scope, $location, $routeParams, EventResource) {
+
+                $scope.event =  EventResource.get({id: $routeParams.id});
+
                 $scope.saveEvent = function () {
                     EventResource.save($scope.event, function (data) {
                         alert("Saved with ID: " + data.id);
@@ -85,6 +92,13 @@ define([
         .controller('EventDetailsCtrl', ['$scope', '$routeParams', 'EventResource',
             function ($scope, $routeParams, EventResource) {
                 $scope.event = EventResource.get({id: $routeParams.id});
+            }])
+
+
+        // Display all participants
+        .controller('EventParticipantsCtrl', ['$scope', '$routeParams', 'EventResource',
+            function ($scope, $routeParams, EventResource) {
+                $scope.event = EventResource.get('/event/:id/participants',{id: $routeParams.id });
             }])
 
         .factory('EventResource', ['$resource', function ($resource) {

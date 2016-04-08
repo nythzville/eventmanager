@@ -7,19 +7,19 @@
         </div>
         <div class="x_content">
             <br>
-            <form ng-submit="saveEvent()" class="form-horizontal form-label-left" novalidate="">
+            <form class="form-horizontal form-label-left" ng-submit="saveEvent()" >
                 <input class="form-control" type="hidden" ng-model="event.id"/>
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Start <span class="required">*</span>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Start
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" ng-model="event.startDate" required="required" class="form-control col-md-7 col-xs-12"><ul class="parsley-errors-list" id="parsley-id-7151"></ul>
+                        <input type="text" ng-model="event.startDate" class="form-control col-md-7 col-xs-12">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date End <span class="required">*</span></label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Date End</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input class="form-control col-md-7 col-xs-12" type="text" ng-model="event.endDate"><ul class="parsley-errors-list" id="parsley-id-6204"></ul>
+                        <input class="form-control col-md-7 col-xs-12" type="text" ng-model="event.endDate">
                     </div>
                 </div>
 
@@ -30,8 +30,7 @@
                         <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
-
-            </>
+            </form>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ package com.eventmanager.dto;
  * Created by nathan on 3/31/2016.
  */
 public class EventDto {
-    private Long Id;
+    private Long id;
     private String eventName;
     private String startDate;
     private String endDate;
@@ -13,18 +13,18 @@ public class EventDto {
 
     }
     public EventDto(Long id, String eventName, String startDate, String endDate) {
-        Id = id;
+        this.id = id;
         this.eventName = eventName;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getEventName() { return eventName; }

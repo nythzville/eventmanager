@@ -1,8 +1,12 @@
 package com.eventmanager.controller;
 
 import com.eventmanager.dto.EventDto;
+import com.eventmanager.dto.EventParticipantsDto;
+import com.eventmanager.dto.ParticipantListDto;
 import com.eventmanager.model.Event;
+import com.eventmanager.model.Participant;
 import com.eventmanager.repo.EventRepo;
+import com.eventmanager.repo.ParticipantRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,11 +31,29 @@ public class EventController {
     @Resource(name = "eventRepo")
     private EventRepo eventRepo;
 
+   @Resource(name = "participantRepo")
+    private ParticipantRepo participantRepo;
+
     @RequestMapping(value = "/event/{id}", method = GET)
     public EventDto get(@PathVariable Long id) throws InterruptedException {
         Event event = eventRepo.findOne(id);
         EventDto dto = new EventDto();
         BeanUtils.copyProperties(event, dto);
+        return dto;
+    }
+
+    @RequestMapping(value = "/event/{id}/participants", method = GET)
+    public EventParticipantsDto getParticipants(@PathVariable Long id) throws InterruptedException {
+        Event event = eventRepo.findOne(id);
+        EventParticipantsDto dto = new EventParticipantsDto();
+        BeanUtils.copyProperties(event, dto, "participants");
+
+        for (Participant participant : event.getParticipants()) {
+            ParticipantListDto pld = new ParticipantListDto();
+            BeanUtils.copyProperties(participant, pld);
+            dto.getParticipant().add(pld);
+        }
+
         return dto;
     }
 
