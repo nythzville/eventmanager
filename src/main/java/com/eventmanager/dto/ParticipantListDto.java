@@ -1,18 +1,26 @@
 package com.eventmanager.dto;
 
+import com.eventmanager.model.User;
+
 /**
  * Created by nathan on 4/8/2016.
  */
 public class ParticipantListDto {
     private Long id;
-    private String userId;
+
+    private User user;
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public ParticipantListDto() {
     }
 
-    public ParticipantListDto(Long id, String userId) {
+    public ParticipantListDto(Long id, Long userId) {
         this.id = id;
-        this.userId = userId;
     }
 
     public Long getId() {
@@ -23,11 +31,4 @@ public class ParticipantListDto {
         id = id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
 }

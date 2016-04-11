@@ -1,6 +1,8 @@
 package com.eventmanager.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kjsiosan on 4/1/2016.
@@ -12,18 +14,18 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
 
     private String username;
 
     private String password;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public String getUsername() {

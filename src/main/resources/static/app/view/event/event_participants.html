@@ -1,16 +1,34 @@
+<a ng-href="#/events" class="btn btn-success">Back To Events</a>
 <table class="table table-striped responsive-utilities jambo_table dataTable">
     <thead>
     <tr>
         <td>Event ID </td>
-        <td>Participant ID</td>
+        <td>Participant Username </td>
     </tr>
     </thead>
     <tbody>
 
-    <tr ng-repeat="participant in participants.participants">
-        <td>{{participants.eventName}}</td>
-        <td>{{participant.userId}}</td>
+    <tr ng-repeat="participant in event.participants">
+        <td>{{event.eventName}}</td>
+        <td> <span ng-repeat="user in participant">
+            {{user.username}}
+        </span></td>
 
     </tr>
     </tbody>
 </table>
+<form class="form-horizontal form-label-left" ng-submit="addParticipants()">
+    <div class="form-group">
+        <button class="btn btn-success col-md-1" ng-click="addParticipant()">Add</button>
+        <label class="control-label col-md-2 col-sm-2 col-xs-6">Participant
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+
+            <select class="form-control col-md-7 col-xs-12" ng-model="participant.userId">
+                <option ng-repeat="user in users" value="{{user.id}}">
+                    {{user.username}}
+                </option>
+            </select>
+        </div>
+    </div>
+</form>

@@ -14,17 +14,23 @@ public class Participant {
     @Id
     @GeneratedValue
     private Long Id;
-    private String userId;
 
     @ManyToOne
     private Event event;
-
     public Event getEvent() {
         return event;
     }
-
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    @ManyToOne
+    private User user;
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 
 
@@ -36,13 +42,5 @@ public class Participant {
         Id = id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-
+    
 }

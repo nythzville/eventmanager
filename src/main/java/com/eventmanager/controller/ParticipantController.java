@@ -4,8 +4,10 @@ import com.eventmanager.dto.EventDto;
 import com.eventmanager.dto.ParticipantDto;
 import com.eventmanager.model.Event;
 import com.eventmanager.model.Participant;
+import com.eventmanager.model.User;
 import com.eventmanager.repo.EventRepo;
 import com.eventmanager.repo.ParticipantRepo;
+import com.eventmanager.repo.UserRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +32,9 @@ public class ParticipantController {
     @Resource(name = "eventRepo")
     private EventRepo eventRepo;
 
+    @Resource(name = "userRepo")
+    private UserRepo userRepo;
+
     @RequestMapping(value = "/participant/{id}", method = GET)
     public ParticipantDto get(@PathVariable Long id) throws InterruptedException {
         Participant participant = participantRepo.findOne(id);
@@ -45,10 +50,10 @@ public class ParticipantController {
 
 
         BeanUtils.copyProperties(dto, participant);
-        //System.out.println("id: "+participant.getId());
         Event event = eventRepo.findOne(dto.getEventId());
         participant.setEvent(event);
-       //System.out.println("user_id: " + event.getId());
+        User user = userRepo.findOne(dto.getUserId());
+        participant.setUser(user);
         Participant saved = participantRepo.save(participant);
 
         BeanUtils.copyProperties(saved, dto);

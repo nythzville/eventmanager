@@ -66,9 +66,10 @@ define([
 
                 $scope.saveEvent = function () {
                     EventResource.save($scope.event, function (data) {
-                        alert("Saved with ID: " + data.id);
+                        //alert("Saved with ID: " + data.id);
                         $location.path('/events');
                     });
+                    console.log($scope.event);
                 }
             }])
 
@@ -95,17 +96,38 @@ define([
                 $scope.event = EventResource.get({id: $routeParams.id});
             }])
 
-        .controller('EventParticipantsCtrl', ['$scope', '$routeParams', 'ParticipantsResource',
-            function ($scope, $routeParams, ParticipantsResource) {
-                $scope.participants = ParticipantsResource.get({id: $routeParams.id});
-                console.log($scope.participants);
+        .controller('EventParticipantsCtrl', ['$scope', '$routeParams', 'EventParticipantsResource','ParticipantsResource','UserResource',
+            function ($scope, $routeParams, EventParticipantsResource,ParticipantsResource,UserResource) {
+                $scope.event = EventParticipantsResource.get({id: $routeParams.id});
+                $scope.users = UserResource.query();
+                $scope.addParticipant = function(){
+                    $scope.participant.eventId = $routeParams.id;
+                    ParticipantsResource.save($scope.participant, function (data) {
+                        //alert("Saved with ID: " + data.id);
+                        //$location.path('/');
+                        console.log('new id: ' + data);
+                        $scope.event = EventParticipantsResource.get({id: $routeParams.id});
+                    });
+                }
             }])
 
+        // Resource for Event
         .factory('EventResource', ['$resource', function ($resource) {
             return $resource('/event/:id');
         }])
-        .factory('ParticipantsResource', ['$resource', function ($resource) {
+        // Resource for Event Participants
+        .factory('EventParticipantsResource', ['$resource', function ($resource) {
             return $resource('/event/:id/participants');
+        }])
+
+        // Resource for  Participants
+        .factory('ParticipantsResource', ['$resource', function ($resource) {
+            return $resource('/participant/:id');
+        }])
+
+        // Resource for User
+        .factory('UserResource', ['$resource', function ($resource) {
+            return $resource('/user/:id');
         }]);
 
 });

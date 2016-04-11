@@ -6,17 +6,18 @@ package com.eventmanager.dto;
 public class ParticipantDto {
 
     private Long id;
-    private String userId;
+    private Long userId;
     private Long eventId;
 
     public ParticipantDto() {
     }
 
-    public ParticipantDto(Long id, String userId) {
+    public ParticipantDto(Long id, Long userId, Long eventId) {
         this.id = id;
         this.userId = userId;
-
+        this.eventId = eventId;
     }
+
     public Long getEventId() {
         return eventId;
     }
@@ -25,6 +26,13 @@ public class ParticipantDto {
         this.eventId = eventId;
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
 
     public Long getId() {
         return id;
@@ -34,11 +42,5 @@ public class ParticipantDto {
     }
 
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
-    public String getUserId() {
-        return userId;
-    }
 }

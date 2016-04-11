@@ -17,6 +17,8 @@ public class Event {
     @GeneratedValue
     private Long id;
     private String eventName;
+    private String location;
+    private String Description;
     private String startDate;
     private String endDate;
 
@@ -57,5 +59,21 @@ public class Event {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }
