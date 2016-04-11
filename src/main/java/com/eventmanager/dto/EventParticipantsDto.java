@@ -9,14 +9,15 @@ import java.util.List;
 public class EventParticipantsDto {
 
     private Long id;
+    private String eventName;
 
     private List<ParticipantListDto> participants = new ArrayList<>();
 
-    public List<ParticipantListDto> getParticipant() {
+    public List<ParticipantListDto> getParticipants() {
         return participants;
     }
 
-    public void setParticipant(List<ParticipantListDto> participants) {
+    public void setParticipants(List<ParticipantListDto> participants) {
         this.participants = participants;
     }
 
@@ -25,7 +26,14 @@ public class EventParticipantsDto {
     }
 
     public void setId(Long id) {
-        id = id;
+        this.id = id;
     }
 
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
 }

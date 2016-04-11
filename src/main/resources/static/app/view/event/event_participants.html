@@ -1,14 +1,15 @@
-<table class="">
+<table class="table table-striped responsive-utilities jambo_table dataTable">
     <thead>
     <tr>
-        <td>Participant {{ event }}</td>
+        <td>Event ID </td>
+        <td>Participant ID</td>
     </tr>
     </thead>
     <tbody>
 
-    <tr ng-repeat="participant in participants">
-        <td>{{participant.userId}}
-        </td>
+    <tr ng-repeat="participant in participants.participants">
+        <td>{{participants.eventName}}</td>
+        <td>{{participant.userId}}</td>
 
     </tr>
     </tbody>

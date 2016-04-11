@@ -48,10 +48,10 @@ public class EventController {
         EventParticipantsDto dto = new EventParticipantsDto();
         BeanUtils.copyProperties(event, dto, "participants");
 
-        for (Participant participant : event.getParticipants()) {
+        for (Participant participant : event.getParticipants() ){
             ParticipantListDto pld = new ParticipantListDto();
             BeanUtils.copyProperties(participant, pld);
-            dto.getParticipant().add(pld);
+            dto.getParticipants().add(pld);
         }
 
         return dto;

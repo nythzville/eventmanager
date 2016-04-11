@@ -5,15 +5,13 @@ package com.eventmanager.dto;
  */
 public class ParticipantListDto {
     private Long id;
-    private String eventId;
     private String userId;
 
     public ParticipantListDto() {
     }
 
-    public ParticipantListDto(Long id, String eventId, String userId) {
+    public ParticipantListDto(Long id, String userId) {
         this.id = id;
-        this.eventId = eventId;
         this.userId = userId;
     }
 
@@ -24,10 +22,6 @@ public class ParticipantListDto {
     public void setId(Long id) {
         id = id;
     }
-
-    public void setEventId(String eventId) { this.eventId = eventId; }
-
-    public String getEventId() { return eventId; }
 
     public void setUserId(String userId) {
         this.userId = userId;

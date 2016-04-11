@@ -23,11 +23,11 @@ define([
                 .when('/event/form', {
                     templateUrl: 'view/event/event_form.html',
                     controller: 'EventSaveCtrl',
-                    resolve: {
-                        greeting: [function () {
-                            return {};
-                        }]
-                    }
+                    // resolve: {
+                    //     greeting: [function () {
+                    //         return {};
+                    //     }]
+                    // }
                 })
 
                 // Edit form for event
@@ -46,11 +46,12 @@ define([
                     templateUrl: 'view/event/event_details.html',
                     controller: 'EventDetailsCtrl'
                 })
-
                 .when('/event/:id/participants', {
                     templateUrl: 'view/event/event_participants.html',
-                    controller: 'EventParticipantsCtrl'
+                     controller: 'EventParticipantsCtrl'
+
                 });
+
         }])
 
 
@@ -61,7 +62,7 @@ define([
         .controller('EventSaveCtrl', ['$scope', '$location', '$routeParams', 'EventResource',
             function ($scope, $location, $routeParams, EventResource) {
 
-                $scope.event =  EventResource.get({id: $routeParams.id});
+                $scope.event =  $routeParams.id == null? null : EventResource.get({id: $routeParams.id});
 
                 $scope.saveEvent = function () {
                     EventResource.save($scope.event, function (data) {
@@ -94,15 +95,17 @@ define([
                 $scope.event = EventResource.get({id: $routeParams.id});
             }])
 
-
-        // Display all participants
-        .controller('EventParticipantsCtrl', ['$scope', '$routeParams', 'EventResource',
-            function ($scope, $routeParams, EventResource) {
-                $scope.event = EventResource.get('/event/:id/participants',{id: $routeParams.id });
+        .controller('EventParticipantsCtrl', ['$scope', '$routeParams', 'ParticipantsResource',
+            function ($scope, $routeParams, ParticipantsResource) {
+                $scope.participants = ParticipantsResource.get({id: $routeParams.id});
+                console.log($scope.participants);
             }])
 
         .factory('EventResource', ['$resource', function ($resource) {
             return $resource('/event/:id');
+        }])
+        .factory('ParticipantsResource', ['$resource', function ($resource) {
+            return $resource('/event/:id/participants');
         }]);
 
 });

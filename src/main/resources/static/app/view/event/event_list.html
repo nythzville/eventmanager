@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <td>Action</td>
+        <td>Event Name</td>
         <td>Date Start</td>
         <td>Date End</td>
     </tr>
@@ -10,15 +11,15 @@
     <tr ng-repeat="event in events">
         <td>
             <a ng-href="#/event/{{event.id}}" class="btn btn-success">View</a>
-            <a ng-href="#/event/{{event.id}}/participants" class="btn btn-success">View Participants</a>
+            <a ng-href="#/event/{{event.id}}/participants" class="btn btn-default">View P</a>
             <a ng-href="#/event/edit/{{event.id}}" class="btn btn-default">Edit</a>
             <a ng-click="removeGreeting(event.id, $index)" class="btn btn-warning">Delete</a>
         </td>
-
+        <td>{{event.eventName}}</td>
         <td>{{convertToDate(event.startDate)|date:'medium'}}</td>
         <td>{{event.endDate|date:'medium'}}</td>
 
     </tr>
     </tbody>
 </table>
-<a ng-href="#/event/form">New</a>
+<a ng-href="#/event/form" class="btn btn-success">New</a>
