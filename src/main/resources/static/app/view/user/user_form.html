@@ -1,0 +1,54 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2> User Form <small> Add new user</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br>
+            <form class="form-horizontal form-label-left" ng-submit="saveUser()" >
+                <input class="form-control" type="hidden" ng-model="user.id"/>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Email
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" ng-model="user.username" class="form-control col-md-7 col-xs-12">
+                    </div>
+                </div>
+
+               <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Password
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" ng-model="user.password" class="form-control col-md-7 col-xs-12">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">First Name</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input class="form-control col-md-7 col-xs-12" type="text" ng-model="user.firstName">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Last Name</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input class="form-control col-md-7 col-xs-12" type="text" ng-model="user.lastName">
+                    </div>
+                </div>
+
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <a ng-href="#/users" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+</div>

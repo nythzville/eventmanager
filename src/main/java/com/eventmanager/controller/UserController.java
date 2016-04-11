@@ -29,6 +29,7 @@ public class UserController {
     @Resource(name = "userRepo")
     private UserRepo userRepo;
 
+    /*READ User*/
     @RequestMapping(value = "/user/{id}", method = GET)
     public UserDto get(@PathVariable Long id) throws InterruptedException {
         User user = userRepo.findOne(id);
@@ -37,6 +38,7 @@ public class UserController {
         return dto;
     }
 
+    /*Lists all users*/
     @RequestMapping(value = "/user", method = GET)
     public List<UserDto> list() throws InterruptedException{
         List<UserDto> dtos = new ArrayList<>();
@@ -51,6 +53,7 @@ public class UserController {
         return dtos;
     }
 
+    /*CREATE / UPDATE User*/
     @RequestMapping(value = "/user", method = POST)
     public UserDto save(@RequestBody UserDto dto) {
         User user = dto.getId() == null ? new User() : userRepo.findOne(dto.getId());
@@ -66,7 +69,7 @@ public class UserController {
         BeanUtils.copyProperties(saved, dto);
         return dto;
     }
-
+    /*DELETE User*/
     @RequestMapping(value = "/user/{id}", method = DELETE)
     public void delete(@PathVariable Long id) {
         userRepo.delete(id);

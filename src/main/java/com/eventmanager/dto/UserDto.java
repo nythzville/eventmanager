@@ -5,24 +5,28 @@ package com.eventmanager.dto;
  */
 public class UserDto {
 
-    private Long Id;
+    private Long id;
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
 
     public UserDto(){}
 
-    public UserDto(Long id, String username, String password) {
-        Id = id;
+    public UserDto(Long id, String username, String password, String firstName, String lastName) {
+        this.id = id;
         this.username = username;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getUsername() {
@@ -39,5 +43,21 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

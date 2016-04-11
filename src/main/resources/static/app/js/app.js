@@ -3,10 +3,11 @@ define([
     'angular',
     'angularRoute',
     'angularUIBootstrap',
-    'module/events'
+    'module/events',
+    'module/user'
 ], function ($, angular) {
 
-    angular.module('Application', ['ngRoute', 'EventsModule'])
+    angular.module('Application', ['ngRoute', 'EventsModule', 'UserModule'])
 
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider.
